@@ -14,5 +14,7 @@ class item:
         self.totalPrice()
         print(self.getName(), self.tPrice)
 
-item1 = item(400000, 2)
+p = 400000
+q = 2
+item1 = item(p, q)
 item1.display()
