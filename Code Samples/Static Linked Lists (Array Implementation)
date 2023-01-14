@@ -1,0 +1,67 @@
+class Node:
+  def __init__(self, data, pointer):
+    self.data = data
+    self.pointer = pointer
+
+LL = [Node(32, 3), Node(48, 2), Node(91, -1), Node(75, 1), Node(0, 5), Node(0, -1)]
+cP = 0
+fP = 4
+
+def create(LL, data, cP):
+  global fP
+
+  n = Node(data, -1)
+  temp1 = LL[fP].pointer
+  LL[fP] = n
+
+  while cP != -1:
+    temp2 = cP
+    cP = LL[cP].pointer
+
+  LL[temp2].pointer = fP
+  fP = temp1
+
+def display(LL, cP):
+  while cP != -1:
+    print(LL[cP].data)
+    cP = LL[cP].pointer
+
+def search(LL, cP, target):
+  found = False
+  while cP != -1 and not found:
+    if LL[cP].data == target:
+      print("Found")
+      found = True
+    cP = LL[cP].pointer
+  if not found:
+    print("Not found")
+
+def delete_last(LL, cP):
+  global fP
+  temp = 0
+  temp2 = 0
+  
+  while cP != -1:
+    temp = temp2
+    temp2 = cP
+    cP = LL[cP].pointer
+
+  LL[temp2].data = 0
+  LL[temp2].pointer = fP
+  fP = temp2
+  LL[temp].pointer = -1
+
+def delete_pos(LL, cP, pos):
+  global fP
+  temp = 0
+  temp2 = 0
+  
+  while cP != LL[pos].pointer:
+    temp = temp2
+    temp2 = cP
+    cP = LL[cP].pointer
+
+  LL[temp2].data = 0
+  LL[temp2].pointer = fP
+  fP = temp2
+  LL[temp].pointer = -1
