@@ -61,7 +61,8 @@ def delete_pos(LL, cP, pos):
     temp2 = cP
     cP = LL[cP].pointer
 
+  LL[temp].pointer = LL[temp2].pointer
   LL[temp2].data = 0
   LL[temp2].pointer = fP
   fP = temp2
-  LL[temp].pointer = -1
+  
